@@ -1,0 +1,57 @@
+Python
+class Solution(object):
+    def merge(self, nums1, m, nums2, n):
+        """
+        :type nums1: List[int]
+        :type m: int
+        :type nums2: List[int]
+        :type n: int
+        :rtype: None Do not return anything, modify nums1 in-place instead.   
+
+        """
+        p1 = m - 1  # Pointer for the last valid element in nums1
+        p2 = n - 1  # Pointer for the last element in nums2
+        p = m + n - 1  # Pointer for the last position in   
+ the merged array
+
+        while p1 >= 0 and p2 >= 0:   
+  # Continue while both arrays have elements
+            if nums1[p1] > nums2[p2]:  # Compare elements at the pointers
+                nums1[p] = nums1[p1]  # Place the larger element in nums1
+                p1 -= 1  # Move p1 to the left
+            else:
+                nums1[p] = nums2[p2]  # Place the larger element in nums1
+                p2 -= 1  # Move p2 to the left
+            p -= 1  # Move p to the left
+
+        # If there are remaining elements in nums2 (they are smaller)
+        nums1[:p2 + 1] = nums2[:p2 + 1]  # Copy them to the beginning of nums1
+
+
+Explanation:
+
+This code efficiently merges two sorted arrays (nums1 and nums2) in-place within nums1. Here's a breakdown:
+
+1. Pointers:
+
+p1: This pointer starts at index m - 1 in nums1, pointing to the last actual element in nums1 (before the trailing zeros).
+p2: This pointer starts at index n - 1 in nums2, pointing to the last element.
+p: This pointer starts at index m + n - 1 in nums1, pointing to the very last position where the merged elements will be placed.
+2. Comparison and Placement:
+
+The while loop continues as long as both p1 and p2 are within the valid bounds of their respective arrays (i.e., there are still elements to compare).
+Inside the loop, we compare the elements at nums1[p1] and nums2[p2].
+The larger of the two elements is placed at nums1[p]. This ensures that we're building the merged array in descending order from the end.
+After placing the larger element, we move the corresponding pointer (p1 or p2) one step to the left to consider the next element in that array.
+The p pointer is also decremented to move to the next position for placement in the merged array.
+3. Handling Remaining Elements:
+
+After the while loop finishes, there might be remaining elements in nums2. This happens if nums2 had smaller elements than those in nums1.
+In this case, we directly copy the remaining elements from nums2 to the beginning of nums1 using slicing (nums1[:p2 + 1] = nums2[:p2 + 1]).
+Key Idea:
+
+The key idea is to start filling the merged array from the end. This allows us to utilize the extra space (the trailing zeros) in nums1 without overwriting any of the original elements.
+
+Time Complexity:
+
+This algorithm has a time complexity of O(m + n) because the while loop iterates at most m + n times, and the final copying step takes at most n operations. This makes it an efficient solution for merging sorted arrays.

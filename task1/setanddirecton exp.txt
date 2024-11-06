@@ -1,0 +1,15 @@
+Explanation:
+
+This code adheres to the provided class template and uses a more iterative approach without utilizing sets:
+
+Initialization: An empty list result is created to store the unique intersection elements.
+
+Iteration:  The code iterates through each number (num) in the nums1 list.
+
+Checking Conditions: For each num, it checks if:
+
+num in nums2: The number exists in the nums2 list.
+num not in result: The number is not already present in the result list.
+Appending to Result: If both conditions are true, the num is appended to the result list.
+
+Returning Result: Finally, the result list containing the unique intersection elements is returned.

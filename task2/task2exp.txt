@@ -1,0 +1,22 @@
+Explanation:
+
+generate_random_data(mean, variance, sample_size): This function generates a list of random threat scores within the range of 0-90, given a mean, variance, and sample size. This is used to simulate different threat scenarios.
+calculate_aggregated_threat_score(department_data, importance_weights): This function calculates the aggregated threat score by:
+Calculating the mean threat score for each department.
+Multiplying the mean score by the department's importance weight.
+Summing the weighted scores across all departments.
+Normalizing the sum to a 0-90 range based on the total possible weighted score.
+Unit Tests:
+
+The TestAggregatedThreatScore class includes several unit tests to verify the calculate_aggregated_threat_score function works correctly in various scenarios:
+
+test_no_threat: Tests the case where all departments have no threat (all scores are 0).
+test_uniform_threat: Tests the case where all departments have the same moderate threat level.
+test_varying_threat_levels: Tests the scenario where departments have different average threat levels.
+test_varying_importance: Tests the case where departments have different importance weights.
+test_outliers: Tests the scenario where some departments have outlier users with very high threat scores.
+Functional Test:
+
+test_functional_case_1: This is a functional test case designed to simulate a realistic scenario where:
+There are no significant outliers in any department.
+The average threat scores across departments are relatively similar.
